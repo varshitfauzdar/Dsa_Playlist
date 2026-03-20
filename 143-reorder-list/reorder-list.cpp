@@ -23,20 +23,20 @@ public:
         }
 
         // Step 2: Reverse second half
-        ListNode* prev = NULL;
+        ListNode* newhead = NULL;
         ListNode* curr = slow->next;
         slow->next = NULL;  // break list
 
         while(curr){
             ListNode* nextNode = curr->next;
-            curr->next = prev;
-            prev = curr;
+            curr->next = newhead;
+            newhead = curr;
             curr = nextNode;
         }
 
         // Step 3: Merge both halves
         ListNode* first = head;
-        ListNode* second = prev;
+        ListNode* second = newhead;
 
         while(second){
             ListNode* temp1 = first->next;
