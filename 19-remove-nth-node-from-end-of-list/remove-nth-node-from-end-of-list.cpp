@@ -17,3 +17,6 @@ public:
         return head;
     }
 };
+
+
+//actually first it traverse x steps by fast then stop there and moves together fast and slow untill fast reaches the end that makes slow at the nth node from the end;
