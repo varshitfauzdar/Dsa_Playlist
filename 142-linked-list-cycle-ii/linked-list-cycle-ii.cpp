@@ -1,20 +1,27 @@
 class Solution {
 public:
     ListNode *detectCycle(ListNode *head) {
+        if(head == NULL || head->next == NULL) return NULL;
+
         ListNode* slow = head;
         ListNode* fast = head;
-        while (fast && fast->next) {
+
+        // Step 1: Detect cycle
+        while(fast && fast->next){
             slow = slow->next;
             fast = fast->next->next;
-            if (slow == fast) {
-                ListNode* entry = head;
-                while (entry != slow) {
-                    entry = entry->next;
+
+            if(slow == fast){
+                // Step 2: Find start of cycle
+                slow = head;
+                while(slow != fast){
                     slow = slow->next;
+                    fast = fast->next;
                 }
-                return entry;
+                return slow;
             }
         }
-        return nullptr;
+
+        return NULL; // No cycle
     }
 };
