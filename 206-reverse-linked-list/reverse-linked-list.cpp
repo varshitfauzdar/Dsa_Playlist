@@ -10,16 +10,15 @@
 class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
-        ListNode* prev = nullptr;
-        ListNode* curr = head;
+        ListNode* prev = NULL;
 
-        while (curr != nullptr) {
-            ListNode* nextNode = curr->next; // save next
-            curr->next = prev;               // reverse pointer
-            prev = curr;                     // move prev forward
-            curr = nextNode;                 // move curr forward
+        while(head){
+            ListNode* next = head->next; // store next
+            head->next = prev;           // reverse
+            prev = head;                 // move prev
+            head = next;                 // move head
         }
 
-        return prev; // new head
+        return prev;
     }
 };
